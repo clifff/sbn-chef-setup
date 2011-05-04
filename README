@@ -1,5 +1,13 @@
-my chef repo for setting up OS X workstations
+###############################################
+# 3-step OS X chef setup
+###############################################
 
-* Step 1: Download Xcode: macappstore://itunes.apple.com/us/app/xcode/id422352214?mt=12
-* Step 2: rake chef:cook
+# Install Xcode...
+open macappstore://itunes.apple.com/us/app/xcode/id422352214?mt=12
 
+# Download the repo and navigate into it... 
+open https://github.com/twelvelabs/chef-repo/tarball/master
+cd ~/Downloads/; tar -xf twelvelabs-chef-repo-*.tar; cd twelvelabs-chef-repo-*
+
+# release the hounds...
+rake chef
