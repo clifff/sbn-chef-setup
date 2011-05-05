@@ -5,9 +5,7 @@
 # Install Xcode...
 open macappstore://itunes.apple.com/us/app/xcode/id422352214?mt=12
 
-# Download the repo and navigate into it... 
-open https://github.com/twelvelabs/chef-repo/tarball/master
-cd ~/Downloads/; tar -xf twelvelabs-chef-repo-*.tar; cd twelvelabs-chef-repo-*
+# update RubyGems
+sudo gem update --system
 
 # release the hounds...
-rake chef
