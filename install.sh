@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-REPO_ROOT = "/tmp/chef-solo"
-REPO_URL = "http://github.com/twelvelabs/osx-cookbooks/tarball/master"
-VENDOR_COOKBOOKS_URL = "http://github.com/twelvelabs/osx-cookbooks/tarball/master"
+REPO_ROOT="/tmp/chef-solo"
+REPO_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
+VENDOR_COOKBOOKS_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
 
 
 # make sure chef is installed...
@@ -17,4 +17,5 @@ curl -sL $REPO_URL | tar -xz -C $REPO_ROOT -m --strip 1
 curl -sL $VENDOR_COOKBOOKS_URL | tar -xz -C "$REPO_ROOT/cookbooks-vendor" -m --strip 1
 
 # get to cookin'...
-sudo chef-solo -c "$REPO_ROOT/config/solo.rb" -j "$REPO_ROOT/config/node.json"
+chef-solo -c "$REPO_ROOT/config/solo.rb" -j "$REPO_ROOT/config/node.json"
+

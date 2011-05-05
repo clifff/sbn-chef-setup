@@ -9,3 +9,4 @@ open macappstore://itunes.apple.com/us/app/xcode/id422352214?mt=12
 sudo gem update --system
 
 # release the hounds...
+sudo curl https://github.com/twelvelabs/chef-repo/raw/master/install.sh | bash
