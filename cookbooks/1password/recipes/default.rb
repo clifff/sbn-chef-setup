@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: dmg
-# Attributes:: default
+# Cookbook Name:: 1password
+# Recipe:: default
 #
 # Copyright 2011, Joshua Timberman
 #
@@ -17,5 +17,7 @@
 # limitations under the License.
 #
 
-default[:dmg][:base_dir] = "/Applications"
-default[:dmg][:cache_dir] = Chef::Config[:file_cache_path]
+application "1Password" do
+  source "http://aws.cachefly.net/aws/dmg/1PW3/English/1Password-#{node['one_password']['version']}.zip"
+end
+

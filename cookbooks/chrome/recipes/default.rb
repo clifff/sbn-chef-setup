@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: dmg
-# Attributes:: default
+# Cookbook Name:: chrome
+# Recipe:: default
 #
-# Copyright 2011, Joshua Timberman
+# Copyright 2011, Skip Baney
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,10 @@
 # limitations under the License.
 #
 
-default[:dmg][:base_dir] = "/Applications"
-default[:dmg][:cache_dir] = Chef::Config[:file_cache_path]
+include_recipe "dmg"
+
+dmg_package "Google Chrome" do
+  dmg_name "googlechrome"
+  source "https://dl-ssl.google.com/chrome/mac/stable/GGRM/googlechrome.dmg"
+  action :install
+end

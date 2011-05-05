@@ -1,2 +1,2 @@
-file_cache_path "/tmp/chef-solo"
-cookbook_path ["/tmp/chef-solo/cookbooks-vendor", "/tmp/chef-solo/cookbooks"]
+file_cache_path "/var/chef-solo"
+cookbook_path ["/var/chef-solo/cookbooks-vendor", "/var/chef-solo/cookbooks"]

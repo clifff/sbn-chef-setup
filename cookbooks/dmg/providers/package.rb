@@ -43,7 +43,9 @@ action :install do
       not_if "hdiutil info | grep -q 'image-path.*#{dmg_file}'"
     end
 
-    execute "cp -r '/Volumes/#{volumes_dir}/#{new_resource.app}.app' '#{new_resource.destination}'"
+    command = "cp -r '/Volumes/#{volumes_dir}/#{new_resource.app}.app' '#{new_resource.destination}'"
+    run_command(:command => command, :user => run_context.node[:dmg][:user])
+
     execute "hdiutil detach '/Volumes/#{volumes_dir}'"
 
     file "#{new_resource.destination}/#{new_resource.app}.app/Contents/MacOS/#{new_resource.app}" do
