@@ -2,7 +2,7 @@
 
 
 REPO_ROOT="/tmp/chef-solo"
-REPO_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
+REPO_URL="http://github.com/twelvelabs/chef-repo/tarball/master"
 VENDOR_COOKBOOKS_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
 
 
