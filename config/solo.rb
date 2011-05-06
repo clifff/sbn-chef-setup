@@ -1,2 +1,4 @@
-file_cache_path "/var/chef-solo"
-cookbook_path ["/var/chef-solo/cookbooks-vendor", "/var/chef-solo/cookbooks"]
+REPO_ROOT = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+
+file_cache_path REPO_ROOT
+cookbook_path [File.join(REPO_ROOT, "cookbooks-vendor"), File.join(REPO_ROOT, "cookbooks")]
