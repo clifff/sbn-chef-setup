@@ -26,29 +26,31 @@ extracted_path = ::File.join(file_cache_path, "#{bundle_name}")
 
 dest_path = "#{node[:mail_plugin][:mail_bundles_path]}/#{bundle_name}"
 
-# download and unpack...
-remote_file archive_path do
-  source "http://dl.dropbox.com/u/15755878/chef-files/#{bundle_name}.tar.gz"
-end
-archive archive_path do
-  not_if { ::File.exist?(extracted_path) }
-  action :extract
-end
+unless ::File.exist?(dest_path)
+  # download and unpack...
+  remote_file archive_path do
+    source "http://dl.dropbox.com/u/15755878/chef-files/#{bundle_name}.tar.gz"
+  end
+  archive archive_path do
+    not_if { ::File.exist?(extracted_path) }
+    action :extract
+  end
 
-# copy over to destination
-execute "ditto #{extracted_path.shellescape} #{dest_path}" do
-  user node[:mail_plugin][:user]
-  group 'staff'
-  creates dest_path
-end
+  # copy over to destination
+  execute "ditto #{extracted_path.shellescape} #{dest_path}" do
+    user node[:mail_plugin][:user]
+    group 'staff'
+    creates dest_path
+  end
 
-# cleanup
-file archive_path do
-  action :delete
-end
-directory extracted_path do
-  recursive true
-  action :delete
+  # cleanup
+  file archive_path do
+    action :delete
+  end
+  directory extracted_path do
+    recursive true
+    action :delete
+  end
 end
 
 
