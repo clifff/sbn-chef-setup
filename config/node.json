@@ -1,8 +1,8 @@
 {
   "run_list": [
+    "homebrew",
     "git",
     "rvm",
-    "homebrew",
     "node",
     "textmate",
     "launchbar",
