@@ -17,7 +17,13 @@
 # limitations under the License.
 #
 
-directory node[:mail_plugin][:mail_bundles_path] do
+directory File.join(ENV['HOME'], 'Library', 'Mail') do
+  owner node[:mail_plugin][:user]
+  group "staff"
+  action :create
+end
+
+directory File.join(ENV['HOME'], 'Library', 'Mail', 'Bundles') do
   owner node[:mail_plugin][:user]
   group "staff"
   action :create

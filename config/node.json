@@ -10,7 +10,6 @@
     "mail_plugin",
     "mail_plugin::letterbox",
     "mail_plugin::mail_act_on",
-    "1password",
-    "chrome"
+    "1password"
   ]
 }
