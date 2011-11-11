@@ -37,7 +37,7 @@ end
 
 execute "load .bash_profile" do
   command "#{user_path}.bash_profile"
-end"
+end
 
 node[:rvm][:rubies].each do |ruby|
   bash "rvm install #{ruby}" do
