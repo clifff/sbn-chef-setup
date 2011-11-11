@@ -1,3 +1,9 @@
+execute node[:homebrew][:prefix] do
+  command "sudo mkdir #{node[:homebrew][:prefix]}; " +
+    "sudo chown #{node[:homebrew][:user]}:staff #{node[:homebrew][:prefix]}"
+  creates node[:homebrew][:prefix]
+end
+
 directory node[:homebrew][:prefix] do
   action :create
   owner node[:homebrew][:user]
@@ -18,20 +24,18 @@ unless File.exist?("#{node[:homebrew][:prefix]}/bin/brew")
     user node[:homebrew][:user]
     creates "#{node[:homebrew][:prefix]}/bin/brew"
   end
-end
 
-file homebrew_tar do
-  action :delete
+  file homebrew_tar do
+    action :delete
+  end
 end
 
 ruby_block "check homebrew" do
   block do
     result = `#{node[:homebrew][:prefix]}/bin/brew --version`
-    raise("brew not working: #{result}") unless result.strip.to_f >= 0.7
+    raise("brew not working: #{result}") unless result.strip.to_f >= 0.8
   end
 end
-
-include_recipe "git"
 
 execute "brew update" do
   command "#{node[:homebrew][:prefix]}/bin/brew update"
