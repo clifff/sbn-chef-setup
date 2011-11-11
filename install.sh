@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR="/var/chef-solo"
+REPO_DIR="/tmp/chef-solo"
 REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 
 echo "Enter sudo password: "
@@ -24,9 +24,9 @@ fi
 
 echo ""
 echo "unpacking <http://github.com/clifff/sbn-chef-setup> into '$REPO_DIR'..."
-echo $sudo_pass | sudo -S rm -Rf $REPO_DIR
-echo $sudo_pass | sudo -S mkdir -p $REPO_DIR
-echo $sudo_pass | sudo -S curl -sL $REPO_URL | sudo tar -xz -C $REPO_DIR -m --strip 1
+rm -Rf $REPO_DIR
+mkdir -p $REPO_DIR
+curl -sL $REPO_URL | tar -xz -C $REPO_DIR -m --strip 1
 
 echo "running chef..."
 echo ""
