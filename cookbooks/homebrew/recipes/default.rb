@@ -1,5 +1,5 @@
 execute "install homebrew" do
-  command "curl -sfL https://github.com/mxcl/homebrew/tarball/master | tar zx -m --strip 1"
+  command %Q[/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"]
   cwd "/usr/local"
   not_if { File.exist? '/usr/local/bin/brew' }
 end
