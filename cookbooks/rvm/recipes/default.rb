@@ -31,6 +31,7 @@ template "#{user_path}.bash_profile" do
   owner   node[:rvm][:user]
   mode    "777"
   variables(
+    :rvm_path => ENV['rvm_path'],
     :user_path => user_path
   )
 end
