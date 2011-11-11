@@ -4,7 +4,9 @@ require 'rake'
 namespace :chef do
   desc "install chef if needed"
   task :install do
-    unless Gem::Specification::find_by_name 'chef'
+    begin
+      Gem::Specification::find_by_name 'chef'
+    rescue
       sh "gem install chef --no-rdoc --no-ri"
     end
   end
