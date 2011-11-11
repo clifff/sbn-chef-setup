@@ -1,7 +1,7 @@
 {
   "run_list": [
-    "homebrew",
     "git",
+    "homebrew",
     "rvm",
     "mysql"
   ]
