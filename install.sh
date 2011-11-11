@@ -42,7 +42,7 @@ source $HOME/.bash_profile
 # Lion seems to have problems installing REE without this, so....
 export CC=/usr/bin/gcc-4.2
 
-rvm install ree-1.8.7-2010.02
+rvm install ree-1.8.7-2010.02 --force
 rvm use ree-1.8.7-2010.02@sbn --create
 rvm use ree-1.8.7-2010.02@sbn --default
 gem update --system 1.3.7
