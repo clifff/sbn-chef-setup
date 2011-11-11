@@ -28,6 +28,9 @@ end
 
 template "#{user_path}.bash_profile" do
   source "bash_profile.erb"
+  owner   node[:rvm][:user]
+  group   node[:rvm][:user]
+  mode    "755"
   variables(
     :user_path => user_path
   )
