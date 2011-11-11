@@ -9,11 +9,12 @@ COOKBOOKS_URL="http://github.com/josh/osx-cookbooks/tarball/master"
 echo "Enter sudo password: "
 read -s sudo_pass
 
-# Install GCC
+# Install GCC, but only if it doesnt exist
 if which gcc >/dev/null; then
   echo "GCC already installed, skipping"
 else
-  curl -o -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg /tmp/gcc-install.pkg && echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
+  curl -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg -o /tmp/gcc-install.pkg
+  echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
 fi
 
 echo ""
