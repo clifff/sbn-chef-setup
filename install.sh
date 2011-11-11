@@ -4,7 +4,7 @@ REPO_DIR="/var/chef-solo"
 REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 
 COOKBOOKS_DIR="$REPO_DIR/cookbooks-vendor"
-COOKBOOKS_URL="http://github.com/josh/osx-cookbooks/tarball/master"
+COOKBOOKS_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
 
 echo "Enter sudo password: "
 read -s sudo_pass
