@@ -25,6 +25,7 @@ bash_profile = '~/.bash_profile'
 execute "echo \"#{load_string}\" 1> #{bash_profile}" do
   not_if { File.exist?(bash_profile) && IO.read(bash_profile).index(load_string) }
 end
+execute "source #{bash_profile}"
 
 node[:rvm][:rubies].each do |ruby|
   bash "rvm install #{ruby}" do
