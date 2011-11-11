@@ -9,7 +9,7 @@ execute "git clone https://github.com/wayneeseguin/rvm.git #{rvm_git}" do
   not_if { File.exist?(rvm_git) || File.exist?("#{prefix}rvm") }
 end
 
-execute "#{rvm_git}/install --prefix #{prefix.shellescape}" do
+execute "#{rvm_git}/install" do
   user node[:rvm][:user]
   not_if { File.exist?("#{prefix}rvm") }
 end
