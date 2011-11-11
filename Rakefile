@@ -20,7 +20,7 @@ namespace :chef do
   end
   desc "run chef-solo using the config and json files stored in ./config"
   task :run do
-    sh "sudo chef-solo -c ./config/solo.rb -j ./config/node.json -l debug"
+    sh "chef-solo -c ./config/solo.rb -j ./config/node.json -l debug"
   end
 end
 
