@@ -33,7 +33,7 @@ template "#{user_path}.bash_profile" do
   )
 end
 
-execute "source #{user_path}.bash_profile"
+execute "#{user_path}.bash_profile"
 
 node[:rvm][:rubies].each do |ruby|
   bash "rvm install #{ruby}" do
