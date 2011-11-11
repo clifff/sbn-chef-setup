@@ -32,7 +32,7 @@ echo $sudo_pass | sudo -S mkdir -p $REPO_DIR
 echo $sudo_pass | sudo -S curl -sL $REPO_URL | sudo tar -xz -C $REPO_DIR -m --strip 1
 
 
-echo "unpacking <http://github.com/josh/osx-cookbooks> into '$COOKBOOKS_DIR'..."
+echo "unpacking <http://github.com/twelvelabs/osx-cookbooks> into '$COOKBOOKS_DIR'..."
 echo $sudo_pass | sudo -S rm -Rf $COOKBOOKS_DIR
 echo $sudo_pass | sudo -S mkdir -p $COOKBOOKS_DIR
 echo $sudo_pass | sudo -S curl -sL $COOKBOOKS_URL | sudo tar -xz -C $COOKBOOKS_DIR -m --strip 1
