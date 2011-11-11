@@ -20,7 +20,7 @@ execute "#{rvm_git}/install" do
 end
 
 
-user_path = "/Users/#{node[:rvm][:user]/"
+user_path = "/Users/#{node[:rvm][:user]}/"
 
 execute "mv #{user_path}.bash_profile #{user_path}.bash_profile.original" do
   only_if File.exist?("#{user_path}.bash_profile")
