@@ -23,7 +23,7 @@ end
 user_path = "/Users/#{node[:rvm][:user]}/"
 
 execute "mv #{user_path}.bash_profile #{user_path}.bash_profile.original" do
-  only_if File.exist?("#{user_path}.bash_profile")
+  only_if { File.exist?("#{user_path}.bash_profile") }
 end
 
 template "#{user_path}.bash_profile" do
