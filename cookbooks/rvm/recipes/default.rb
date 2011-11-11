@@ -19,27 +19,21 @@ execute "#{rvm_git}/install" do
   not_if { File.exist?("#{prefix}rvm") }
 end
 
-# obiously only going to work for mac
-load_string = ""
-bash_profile = "/Users/#{node[:rvm][:user]}/.bash_profile"
 
-file bash_profile do
-  profile_content = %Q{
-[[ -s "/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm" ]] && source "/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm"
-}
-  only_if do
-    if !File.exist?(bash_profile)
-      true
-    elsif File.exist?(bash_profile) && IO.read(bash_profile).index(profile_content).nil?
-      profile_content = IO.read(bash_profile) + "\n" + profile_content
-      true
-    else
-      false
-    end
-  end
-  content profile_content
+user_path = "/Users/#{node[:rvm][:user]/"
+
+execute "mv #{user_path}.bash_profile #{user_path}.bash_profile.original" do
+  only_if File.exist?("#{user_path}.bash_profile")
 end
-execute "source #{bash_profile}"
+
+template "#{user_path}.bash_profile" do
+  source "bash_profile.erb"
+  variables(
+    :user_path => user_path
+  )
+end
+
+execute "source #{user_path}.bash_profile"
 
 node[:rvm][:rubies].each do |ruby|
   bash "rvm install #{ruby}" do
