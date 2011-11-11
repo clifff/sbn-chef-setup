@@ -29,13 +29,15 @@ end
 template "#{user_path}.bash_profile" do
   source "bash_profile.erb"
   owner   node[:rvm][:user]
-  mode    "755"
+  mode    "777"
   variables(
     :user_path => user_path
   )
 end
 
-execute "#{user_path}.bash_profile"
+execute "load .bash_profile" do
+  command "#{user_path}.bash_profile"
+end"
 
 node[:rvm][:rubies].each do |ruby|
   bash "rvm install #{ruby}" do
