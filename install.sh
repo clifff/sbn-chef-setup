@@ -41,7 +41,7 @@ echo "running chef..."
 echo ""
 
 cd $REPO_DIR
-rake chef
+echo $sudo_pass | sudo -S rake chef
 
 echo ""
 echo "installing sbn RVM gemset..."
