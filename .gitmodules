@@ -1,3 +1,0 @@
-[submodule "cookbooks-vendor"]
-	path = cookbooks-vendor
-	url = git://github.com/twelvelabs/osx-cookbooks.git
