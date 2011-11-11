@@ -6,7 +6,7 @@ namespace :chef do
   task :install do
     begin
       Gem::Specification::find_by_name 'chef'
-    rescue
+    rescue Exception => e
       sh "gem install chef --no-rdoc --no-ri"
     end
   end
