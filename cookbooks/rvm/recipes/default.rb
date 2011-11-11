@@ -12,8 +12,9 @@ end
 
 ENV['rvm_path']="#{prefix}/rvm"
 
-cwd "#{rvm_git}"
-execute "./install" do
+
+execute "#{rvm_git}/install" do
+  cwd "#{rvm_git}"
   user node[:rvm][:user]
   not_if { File.exist?("#{prefix}rvm") }
 end
