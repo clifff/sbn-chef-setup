@@ -3,7 +3,7 @@ require "rubygems"
 namespace :chef do
   desc "install chef if needed"
   task :install do
-    unless Gem.available? 'chef'
+    unless gem_available? 'chef'
       sh "gem install chef --no-rdoc --no-ri"
     end
   end

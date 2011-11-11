@@ -6,6 +6,9 @@ REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 COOKBOOKS_DIR="$REPO_DIR/cookbooks-vendor"
 COOKBOOKS_URL="http://github.com/josh/osx-cookbooks/tarball/master"
 
+echo "Enter sudo password: "
+read -s sudo_pass
+
 # Install GCC
 if which gcc >/dev/null; then
   echo "GCC already installed, skipping"
@@ -19,21 +22,21 @@ gem update --system
 
 echo ""
 echo "unpacking <http://github.com/clifff/sbn-chef-setup> into '$REPO_DIR'..."
-rm -Rf $REPO_DIR
-mkdir -p $REPO_DIR
-curl -sL $REPO_URL | tar -xz -C $REPO_DIR -m --strip 1
+echo $sudo_pass | sudo rm -Rf $REPO_DIR
+echo $sudo_pass | sudo mkdir -p $REPO_DIR
+echo $sudo_pass | sudo curl -sL $REPO_URL | sudo tar -xz -C $REPO_DIR -m --strip 1
 
 
 echo "unpacking <http://github.com/josh/osx-cookbooks> into '$COOKBOOKS_DIR'..."
-rm -Rf $COOKBOOKS_DIR
-mkdir -p $COOKBOOKS_DIR
-curl -sL $COOKBOOKS_URL | tar -xz -C $COOKBOOKS_DIR -m --strip 1
+echo $sudo_pass | sudo rm -Rf $COOKBOOKS_DIR
+echo $sudo_pass | sudo mkdir -p $COOKBOOKS_DIR
+echo $sudo_pass | sudo curl -sL $COOKBOOKS_URL | sudo tar -xz -C $COOKBOOKS_DIR -m --strip 1
 
 echo "running chef..."
 echo ""
 
 cd $REPO_DIR
-rake chef
+echo $sudo_pass | sudo rake chef
 
 echo ""
 echo "installing sbn RVM gemset..."
