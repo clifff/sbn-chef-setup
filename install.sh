@@ -19,7 +19,11 @@ fi
 
 echo ""
 echo "Updating rubygems"
-gem update --system
+if which rvm >/dev/null; then
+  gem update --system
+else
+  echo $sudo_pass | sudo -S gem update --system
+fi
 
 echo ""
 echo "unpacking <http://github.com/clifff/sbn-chef-setup> into '$REPO_DIR'..."
