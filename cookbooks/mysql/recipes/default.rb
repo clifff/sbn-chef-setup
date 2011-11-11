@@ -2,10 +2,11 @@ include_recipe "homebrew"
 
 package "mysql"
 
+# Hopefully there is no problem with this always running?
 execute "mysql_install_db" do
-  command "mysql_install_db  --user=mysql --tmpdir=/tmp && mysql.server start && mysql_secure_installation"
+  install_db = %Q[mysql_install_db --verbose --user=`whoami` --basedir="$(brew --prefix mysql)" --datadir=/usr/local/var/mysql --tmpdir=/tmp]
+  command install_db
   user node[:homebrew][:user]
-  creates "#{node[:homebrew][:prefix]}/var/mysql"
 end
 
 if node[:mysql][:launchd]
