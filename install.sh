@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR="/tmp/chef-solo"
+REPO_DIR="$HOME/chef-solo"
 REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 
 echo "Enter sudo password: "
