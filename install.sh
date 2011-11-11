@@ -49,9 +49,10 @@ rvm use ree-1.8.7-2010.02@sbn --default
 gem update --system 1.3.7
 gem install bundler -v 1.0.15
 
+# TODO: Move this into chef template
 echo ""
 echo "writing /etc/my.cnf copied from sbn repo..."
-echo $sudo_pass | sudo -S cat << 'EOF' > /etc/my.cnf
+echo $sudo_pass | sudo -S bash -c "cat << 'EOF' > /etc/my.cnf
 [mysqld]
 character-set-server=utf8
 collation-server=utf8_general_ci
@@ -59,6 +60,7 @@ collation-server=utf8_general_ci
 [mysql]
 default-character-set=utf8
 EOF
+"
 
 echo ""
 echo "installing various things via homebrew..."
