@@ -1,21 +1,30 @@
 #!/bin/bash
 
-
 REPO_DIR="/var/chef-solo"
-REPO_URL="http://github.com/twelvelabs/chef-repo/tarball/master"
+REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 
 COOKBOOKS_DIR="$REPO_DIR/cookbooks-vendor"
-COOKBOOKS_URL="http://github.com/twelvelabs/osx-cookbooks/tarball/master"
+COOKBOOKS_URL="http://github.com/josh/osx-cookbooks/tarball/master"
 
+# Install GCC
+if which gcc >/dev/null; then
+  echo "GCC already installed, skipping"
+else
+  curl -o -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg /tmp/gcc-install.pkg && sudo installer -pkg "/tmp/gcc-install.pkg" -target /
+fi
 
 echo ""
-echo "unpacking <http://github.com/twelvelabs/chef-repo> into '$REPO_DIR'..."
+echo "Updating rubygems"
+gem update --system
+
+echo ""
+echo "unpacking <http://github.com/clifff/sbn-chef-setup> into '$REPO_DIR'..."
 rm -Rf $REPO_DIR
 mkdir -p $REPO_DIR
 curl -sL $REPO_URL | tar -xz -C $REPO_DIR -m --strip 1
 
 
-echo "unpacking <http://github.com/twelvelabs/osx-cookbooks> into '$COOKBOOKS_DIR'..."
+echo "unpacking <http://github.com/josh/osx-cookbooks> into '$COOKBOOKS_DIR'..."
 rm -Rf $COOKBOOKS_DIR
 mkdir -p $COOKBOOKS_DIR
 curl -sL $COOKBOOKS_URL | tar -xz -C $COOKBOOKS_DIR -m --strip 1
@@ -34,8 +43,16 @@ rvm use ree-1.8.7-2010.02@sbn --default
 gem update --system 1.3.7
 gem install bundler -v 1.0.15
 
-# TODO mysql my.cnf stuff here
-# TODO git name/email
+echo ""
+echo "writing /etc/my.cnf copied from sbn repo..."
+cat << 'EOF' > /etc/my.cnf
+[mysqld]
+character-set-server=utf8
+collation-server=utf8_general_ci
+
+[mysql]
+default-character-set=utf8
+EOF
 
 echo ""
 echo "installing various things via homebrew..."
@@ -51,5 +68,5 @@ echo "installing mysql gem"
 env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
 
 echo ""
-echo "fini!"
+echo "Total victory!"
 echo ""
