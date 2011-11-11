@@ -1,12 +1,12 @@
 ###############################################
-# 3-step OS X chef setup
+# 3-step SBN Dependency Setup
 ###############################################
 
-# Install Xcode...
-open macappstore://itunes.apple.com/us/app/xcode/id422352214?mt=12
+# Install GCC
+curl -o -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg /tmp/gcc-install.pkg && sudo installer -pkg "/tmp/gcc-install.pkg" -target /
 
 # update RubyGems
 sudo gem update --system
 
 # release the hounds...
-curl -L https://raw.github.com/twelvelabs/chef-repo/master/install.sh | sudo bash
+curl -L https://raw.github.com/clifff/sbn-chef-setup/master/install.sh | sudo bash
