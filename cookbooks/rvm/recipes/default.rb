@@ -21,7 +21,7 @@ end
 
 # obiously only going to work for mac
 load_string = ""
-bash_profile = '~/.bash_profile'
+bash_profile = "/Users/#{node[:rvm][:user]}/.bash_profile"
 
 file bash_profile do
   profile_content = %Q{
