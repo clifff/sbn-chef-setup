@@ -1,8 +1,7 @@
 DESCRIPTION
 ===========
 
-Configures homebrew and homebrew packages. Branched from josh's homebrew recipe
-because it excludes the brew-gem and brew-pip dependencies
+Configures homebrew and homebrew packages. Branched from https://github.com/mathie/chef-homebrew
 
 RECIPES
 =======
