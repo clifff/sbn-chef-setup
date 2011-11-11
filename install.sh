@@ -13,7 +13,7 @@ read -s sudo_pass
 if which gcc >/dev/null; then
   echo "GCC already installed, skipping"
 else
-  curl -o -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg /tmp/gcc-install.pkg && sudo installer -pkg "/tmp/gcc-install.pkg" -target /
+  curl -o -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg /tmp/gcc-install.pkg && echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
 fi
 
 echo ""
@@ -22,21 +22,21 @@ gem update --system
 
 echo ""
 echo "unpacking <http://github.com/clifff/sbn-chef-setup> into '$REPO_DIR'..."
-echo $sudo_pass | sudo rm -Rf $REPO_DIR
-echo $sudo_pass | sudo mkdir -p $REPO_DIR
-echo $sudo_pass | sudo curl -sL $REPO_URL | sudo tar -xz -C $REPO_DIR -m --strip 1
+echo $sudo_pass | sudo -S rm -Rf $REPO_DIR
+echo $sudo_pass | sudo -S mkdir -p $REPO_DIR
+echo $sudo_pass | sudo -S curl -sL $REPO_URL | sudo tar -xz -C $REPO_DIR -m --strip 1
 
 
 echo "unpacking <http://github.com/josh/osx-cookbooks> into '$COOKBOOKS_DIR'..."
-echo $sudo_pass | sudo rm -Rf $COOKBOOKS_DIR
-echo $sudo_pass | sudo mkdir -p $COOKBOOKS_DIR
-echo $sudo_pass | sudo curl -sL $COOKBOOKS_URL | sudo tar -xz -C $COOKBOOKS_DIR -m --strip 1
+echo $sudo_pass | sudo -S rm -Rf $COOKBOOKS_DIR
+echo $sudo_pass | sudo -S mkdir -p $COOKBOOKS_DIR
+echo $sudo_pass | sudo -S curl -sL $COOKBOOKS_URL | sudo tar -xz -C $COOKBOOKS_DIR -m --strip 1
 
 echo "running chef..."
 echo ""
 
 cd $REPO_DIR
-echo $sudo_pass | sudo rake chef
+echo $sudo_pass | sudo -S rake chef
 
 echo ""
 echo "installing sbn RVM gemset..."
