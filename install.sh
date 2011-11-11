@@ -50,7 +50,7 @@ gem install bundler -v 1.0.15
 
 echo ""
 echo "writing /etc/my.cnf copied from sbn repo..."
-cat << 'EOF' > /etc/my.cnf
+echo $sudo_pass | sudo -S cat << 'EOF' > /etc/my.cnf
 [mysqld]
 character-set-server=utf8
 collation-server=utf8_general_ci
