@@ -39,6 +39,8 @@ echo "installing sbn RVM gemset..."
 
 # We probably just wrote out the rvm loading stuff in .bash_profile so...
 source $HOME/.bash_profile
+# Lion seems to have problems installing REE without this, so....
+export CC=/usr/bin/gcc-4.2
 
 rvm install ree-1.8.7-2010.02
 rvm use ree-1.8.7-2010.02@sbn --create
