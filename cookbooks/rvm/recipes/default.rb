@@ -20,10 +20,24 @@ execute "#{rvm_git}/install" do
 end
 
 # obiously only going to work for mac
-load_string = "[[ -s \"/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm\" ]] && source \"/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm\""
+load_string = ""
 bash_profile = '~/.bash_profile'
-execute "echo \"#{load_string}\" 1> #{bash_profile}" do
-  not_if { File.exist?(bash_profile) && IO.read(bash_profile).index(load_string) }
+
+file bash_profile do
+  profile_content = %Q{
+[[ -s "/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm" ]] && source "/Users/#{node[:rvm][:user]}/./rvm/scripts/rvm"
+}
+  only_if do
+    if !File.exist?(bash_profile)
+      true
+    elsif File.exist?(bash_profile) && IO.read(bash_profile).index(profile_content).nil?
+      profile_content = IO.read(bash_profile) + "\n" + profile_content
+      true
+    else
+      false
+    end
+  end
+  content profile_content
 end
 execute "source #{bash_profile}"
 
