@@ -36,6 +36,10 @@ rake chef
 
 echo ""
 echo "installing sbn RVM gemset..."
+
+# We probably just wrote out the rvm loading stuff in .bash_profile so...
+source $HOME/.bash_profile
+
 rvm install ree-1.8.7-2010.02
 rvm use ree-1.8.7-2010.02@sbn --create
 rvm use ree-1.8.7-2010.02@sbn --default
