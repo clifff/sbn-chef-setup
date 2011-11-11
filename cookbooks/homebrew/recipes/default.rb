@@ -37,6 +37,8 @@ ruby_block "check homebrew" do
   end
 end
 
+include_recipe "git"
+
 execute "brew update" do
   command "#{node[:homebrew][:prefix]}/bin/brew update"
   user node[:homebrew][:user]
