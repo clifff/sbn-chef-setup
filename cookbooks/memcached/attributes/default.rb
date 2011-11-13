@@ -1,1 +1,0 @@
-default.memcached[:launchd] = true
