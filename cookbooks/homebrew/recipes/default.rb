@@ -1,3 +1,5 @@
+directory "/usr/local"
+
 execute "install homebrew" do
   command %Q[/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"]
   cwd "/usr/local"
