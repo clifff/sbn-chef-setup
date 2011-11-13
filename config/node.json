@@ -4,6 +4,7 @@
     "git",
     "rvm",
     "memcached",
+    "redis",
     "mysql"
   ]
 }
