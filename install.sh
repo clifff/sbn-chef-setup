@@ -34,20 +34,8 @@ echo ""
 cd $REPO_DIR
 rake chef
 
-echo ""
-echo "installing sbn RVM gemset..."
-
-# We probably just wrote out the rvm loading stuff in .bash_profile so...
+# We probably just wrote out the rvm loading stuff in .bash_profile so load it up
 source $HOME/.bash_profile
-# Lion seems to have problems installing REE without this, so....
-rvm remove ree-1.8.7-2010.02
-export CC=/usr/bin/gcc-4.2
-
-rvm install --force ree-1.8.7-2010.02 
-rvm use ree-1.8.7-2010.02@sbn --create
-rvm use ree-1.8.7-2010.02@sbn --default
-gem update --system 1.3.7
-gem install bundler -v 1.0.15
 
 # TODO: Move this into chef template
 echo ""
@@ -67,4 +55,7 @@ env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local
 
 echo ""
 echo "Total victory!"
+echo "Two final things..."
+echo "1) Please run the command 'source ~/.bash_profile'"
+echo "2) To continue SBN installation, head over to https://github.com/sbnation/sbn and continue following the directions there."
 echo ""

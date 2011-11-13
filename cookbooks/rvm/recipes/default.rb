@@ -37,18 +37,31 @@ template "#{user_path}.bash_profile" do
 end
 
 
-node[:rvm][:rubies].each do |ruby|
-  bash "rvm install #{ruby}" do
-    code <<-EOS
-      export rvm_path=#{node[:rvm][:prefix]}rvm
-      source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
-      rvm install #{ruby}
-    EOS
-    not_if <<-EOS
-      export rvm_path=#{node[:rvm][:prefix]}rvm
-      source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
-      rvm list | grep #{ruby}
-   EOS
-    user node[:rvm][:user]
-  end
+bash "install sbn default gemset" do
+  default_gemset = node[:rvm][:default_gemset]
+  default_ruby = default_gemset[0...default_gemset.index('@')]
+
+  # NOTE: When installing, the removing/export CC/force install is neccesary
+  # because of some weirdness w/ rvm installing REE on lion
+  # see: http://stackoverflow.com/questions/6170813/why-cant-i-install-rails-on-lion-using-rvm
+
+  code <<-EOS
+    export rvm_path=#{node[:rvm][:prefix]}rvm
+    source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
+    rvm remove #{default_ruby}
+    export CC=/usr/bin/gcc-4.2
+    rvm install --force #{default_ruby}
+    rvm use #{default_gemset} --create
+    rvm use #{default_gemset} --default
+    gem update --system #{node[:rvm][:sbn_rubygems_version]}
+    gem install bundler -v #{node[:rvm][:sbn_bundler_version]}
+  EOS
+  not_if <<-EOS
+    export rvm_path=#{node[:rvm][:prefix]}rvm
+    source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
+    rvm list | grep #{default_ruby}
+ EOS
+  user node[:rvm][:user]
 end
+
+
