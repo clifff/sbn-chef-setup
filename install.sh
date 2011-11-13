@@ -61,12 +61,6 @@ collation-server=utf8_general_ci
 default-character-set=utf8
 EOF
 "
-
-echo ""
-echo "installing various things via homebrew..."
-brew install libxml2 --with-xml2-config
-brew link libxml2
-
 echo ""
 echo "installing mysql gem"
 env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local/bin/mysql_config

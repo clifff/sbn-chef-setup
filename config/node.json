@@ -6,6 +6,8 @@
     "memcached",
     "redis",
     "aspell",
+    "image_magick",
+    "libxml2",
     "mysql"
   ]
 }
