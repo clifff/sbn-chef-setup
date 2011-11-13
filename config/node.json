@@ -5,6 +5,7 @@
     "rvm",
     "memcached",
     "redis",
+    "aspell",
     "mysql"
   ]
 }

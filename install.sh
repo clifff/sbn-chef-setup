@@ -64,7 +64,6 @@ EOF
 
 echo ""
 echo "installing various things via homebrew..."
-brew install aspell --lang=en
 brew install libxml2 --with-xml2-config
 brew link libxml2
 
