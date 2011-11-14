@@ -83,7 +83,7 @@ class Chef
           command << %Q{ bash -c "#{@new_resource.command}"}
         end
 
-        options = {:command => "echo $sudo_pass | sudo -S #{command.join(' ')}"}
+        options = {:command => "echo #{ENV['sudo_pass']} | sudo -S #{command.join(' ')}"}
         options[:environment] = @new_resource.environment if @new_resource.environment
 
         Chef::Mixin::Command.run_command(options)
