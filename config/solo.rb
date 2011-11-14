@@ -1,3 +1,5 @@
+require 'lib/chef-sudo'
+
 REPO_ROOT = File.expand_path(File.join(File.dirname(__FILE__), ".."))
 
 # Using /tmp instead of REPO_ROOT, because chef is being run NOT as sudo
