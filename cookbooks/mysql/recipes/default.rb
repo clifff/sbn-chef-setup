@@ -27,6 +27,5 @@ end
 if node[:mysql][:launchd]
   launch_service "com.mysql.mysqld" do
     template_variables :prefix => node[:homebrew][:prefix]
-    not_if { File.exists?("/Library/LaunchDaemons/com.mysql.mysqld.plist") }
   end
 end

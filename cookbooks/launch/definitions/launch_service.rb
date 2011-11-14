@@ -28,5 +28,6 @@ define :launch_service do
     source params[:template_name]
     variables params[:template_variables]
     notifies :reload, resource
+    not_if { File.exists?(params[:path]) }
   end
 end
