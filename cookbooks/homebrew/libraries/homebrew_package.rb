@@ -17,7 +17,7 @@ class Chef
         end
 
         def install_package(name, version)
-          brew('install', name)
+          brew('install', name, expand_options(@new_resource.options))
         end
 
         # Homebrew doesn't really have a notion of upgrading packages, just
