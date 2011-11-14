@@ -32,10 +32,6 @@ curl -sL $REPO_URL | tar -xz -C $REPO_DIR -m --strip 1
 echo "running chef..."
 echo ""
 
-# Doing this prevents a weird chef error requireing specifc versions for ImageMagick to be specified
-# See: http://getsatisfaction.com/opscode/topics/package_dont_install_without_specifying_version
-export LC_ALL="C chef-solo"
-
 cd $REPO_DIR
 rake chef
 
