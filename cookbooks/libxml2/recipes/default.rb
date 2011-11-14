@@ -5,5 +5,6 @@ package "libxml2" do
 end
 
 execute "brew link libxml2" do
-  only_if { `which xml2-config`.index("/usr/bin") }
+  # Ignore failure cause I dont understand this requirement in the first place
+  ignore_failure true
 end
