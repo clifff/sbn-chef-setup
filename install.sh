@@ -40,7 +40,7 @@ source $HOME/.bash_profile
 
 echo ""
 echo "installing mysql gem"
-env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local/bin/mysql_config
+env ARCHFLAGS="-arch x86_64" gem install mysql --no-rdoc --no-ri -- --with-mysql-config=/usr/local/bin/mysql_config
 
 echo ""
 echo "Total victory!"
