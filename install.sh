@@ -10,6 +10,7 @@ read -s sudo_pass
 if which gcc >/dev/null; then
   echo "GCC already installed, skipping"
 else
+  echo "Installing GCC..."
   curl -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg -o /tmp/gcc-install.pkg
   echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
 fi
