@@ -44,7 +44,8 @@ env ARCHFLAGS="-arch x86_64" gem install mysql --no-rdoc --no-ri -- --with-mysql
 
 echo ""
 echo "Total victory!"
-echo "Two final things..."
-echo "1) Please run the command 'source ~/.bash_profile'"
-echo "2) To continue SBN installation, head over to https://github.com/sbnation/sbn and continue following the directions there."
+echo "Three final things..."
+echo "1) If everything went well, you can ignore all the Homebrew output above telling you to do things"
+echo "2) Please run the command 'source ~/.bash_profile'"
+echo "3) To continue SBN installation, head over to https://github.com/sbnation/sbn and continue following the directions there."
 echo ""
