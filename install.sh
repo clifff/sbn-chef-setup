@@ -33,7 +33,7 @@ echo "running chef..."
 echo ""
 
 cd $REPO_DIR
-rake chef
+rake chef sudo_pass=$sudo_pass
 
 # We probably just wrote out the rvm loading stuff in .bash_profile so load it up
 source $HOME/.bash_profile
