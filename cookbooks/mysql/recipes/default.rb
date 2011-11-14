@@ -10,17 +10,10 @@ execute "mysql_install_db" do
 end
 
 # Would be nice to have this as a template, but it needs to be run as sudo and chef is called as a normal user
-sudo "write /etc/my.cnf" do
-  command <<-EOS
-    cat << 'EOF' > /etc/my.cnf
-    [mysqld]
-    character-set-server=utf8
-    collation-server=utf8_general_ci
-
-    [mysql]
-    default-character-set=utf8
-    EOF
-  EOS
+template "/etc/my.cnf" do
+  source "my.cnf"
+  owner root
+  mode "777"
   not_if { File.exists?("/etc/mf.cnf") }
 end
 
