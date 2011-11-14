@@ -38,18 +38,6 @@ rake chef
 # We probably just wrote out the rvm loading stuff in .bash_profile so load it up
 source $HOME/.bash_profile
 
-# TODO: Move this into chef template
-echo ""
-echo "writing /etc/my.cnf copied from sbn repo..."
-echo $sudo_pass | sudo -S bash -c "cat << 'EOF' > /etc/my.cnf
-[mysqld]
-character-set-server=utf8
-collation-server=utf8_general_ci
-
-[mysql]
-default-character-set=utf8
-EOF
-"
 echo ""
 echo "installing mysql gem"
 env ARCHFLAGS="-arch x86_64" gem install mysql -- --with-mysql-config=/usr/local/bin/mysql_config
