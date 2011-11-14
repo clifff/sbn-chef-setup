@@ -5,5 +5,5 @@ package "libxml2" do
 end
 
 execute "brew link libxml2" do
-  only_if { `which xml2-config`.index("/usr/local/bin").nil? }
+  only_if { `which xml2-config`.index("/usr/bin") }
 end
