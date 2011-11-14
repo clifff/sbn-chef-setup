@@ -46,8 +46,7 @@ bash "install sbn default gemset" do
   # see: http://stackoverflow.com/questions/6170813/why-cant-i-install-rails-on-lion-using-rvm
 
   code <<-EOS
-    export rvm_path=#{node[:rvm][:prefix]}rvm
-    source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
+    source "#{user_path}.bash_profile"
     rvm remove #{default_ruby}
     export CC=/usr/bin/gcc-4.2
     rvm install --force #{default_ruby}
@@ -57,8 +56,7 @@ bash "install sbn default gemset" do
     gem install bundler -v #{node[:rvm][:sbn_bundler_version]}
   EOS
   not_if <<-EOS
-    export rvm_path=#{node[:rvm][:prefix]}rvm
-    source "#{node[:rvm][:prefix]}rvm/scripts/rvm"
+    source "#{user_path}.bash_profile"
     rvm list | grep #{default_ruby}
  EOS
   user node[:rvm][:user]
