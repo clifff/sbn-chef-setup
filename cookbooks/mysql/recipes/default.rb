@@ -13,7 +13,7 @@ end
 template "/etc/my.cnf" do
   source "my.cnf"
   owner "root"
-  mode "777"
+  mode "0644"
   not_if { File.exists?("/etc/mf.cnf") }
 end
 
