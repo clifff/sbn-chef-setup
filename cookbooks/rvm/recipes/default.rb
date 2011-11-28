@@ -10,7 +10,7 @@ execute "git clone https://github.com/wayneeseguin/rvm.git #{rvm_git}" do
 end
 
 
-ENV['rvm_path']="#{prefix}/rvm"
+ENV['rvm_path']="#{prefix}/.rvm"
 
 
 execute "#{rvm_git}/install" do
