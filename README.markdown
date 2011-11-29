@@ -28,6 +28,5 @@ In short, this script uses Chef-solo (contained inthis repo) to manage Homebrew 
   * redis
   * aspell
   * ImageMagick
-  * libxml2
   * mysql
 * Finally, it installs the mysql gem into the SBN gemset
