@@ -3,8 +3,17 @@
 REPO_DIR="$HOME/chef-solo"
 REPO_URL="http://github.com/clifff/sbn-chef-setup/tarball/master"
 
+# Expire the sudo timer to make sure we read in a valid password
+sudo -K
+
 echo "Enter sudo password: "
 read -s sudo_pass
+
+# ensure the password is correct
+if !(echo $sudo_pass | sudo -S pwd &> /dev/null); then
+  echo "Incorrect sudo password! Please try again."
+  exit
+fi
 
 # Install GCC, but only if it doesnt exist
 if which gcc >/dev/null; then
