@@ -15,6 +15,7 @@ You may have to register/sign in, so go ahead and do that.
 
 2. Run this (all one line) in a terminal:
 
+<!-- force end of numbered list before code black -->
 
     curl -L https://raw.github.com/clifff/sbn-chef-setup/master/install.sh -o /tmp/sbn_install.sh && chmod +x /tmp/sbn_install.sh && /tmp/sbn_install.sh
 
