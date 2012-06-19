@@ -9,7 +9,11 @@ Note that right now, this script only supports Lion (OS X 10.7), and
 is only designed to work on a totally clean installation.
 
 ## How to use
-Just run this (all one line) in a terminal:
+
+1. [Go to this page and download/install "Command Line Tools for Xcode"](https://developer.apple.com/downloads/index.action).
+You may have to register/sign in, so go ahead and do that.
+
+2. Run this (all one line) in a terminal:
 
     curl -L https://raw.github.com/clifff/sbn-chef-setup/master/install.sh -o /tmp/sbn_install.sh && chmod +x /tmp/sbn_install.sh && /tmp/sbn_install.sh
 
