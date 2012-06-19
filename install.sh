@@ -19,9 +19,8 @@ fi
 if which gcc >/dev/null; then
   echo "GCC already installed, skipping"
 else
-  echo "Installing GCC..."
-  curl -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg -o /tmp/gcc-install.pkg
-  echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
+  echo "GCC not found. I deeply suspect you did not install the Xcode Command Line tools. Exiting!"
+  exit 1
 fi
 
 echo ""
@@ -44,12 +43,24 @@ echo ""
 cd $REPO_DIR
 rake chef sudo_pass=$sudo_pass
 
+# Abort unless we got a clean exit code from Chef
+if [ $? -gt 0 ]; then
+  echo "Something went wrong running Chef. Abort!"
+  exit 1
+fi
+
 # We probably just wrote out the rvm loading stuff in .bash_profile so load it up
 source $HOME/.bash_profile
 
 echo ""
 echo "installing mysql gem"
 env ARCHFLAGS="-arch x86_64" gem install mysql --no-rdoc --no-ri -- --with-mysql-config=/usr/local/bin/mysql_config
+
+# Abort unless we got a clean exit code from install mysql
+if [ $? -gt 0 ]; then
+  echo "Something went wrong installing the MySQL gem. Abort!"
+  exit 1
+fi
 
 echo ""
 echo "Total victory!"
