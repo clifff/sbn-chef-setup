@@ -15,12 +15,13 @@ if !(echo $sudo_pass | sudo -S pwd &> /dev/null); then
   exit
 fi
 
-# Install GCC, but only if it doesnt exist
-if which gcc >/dev/null; then
-  echo "GCC already installed, skipping"
+# Install GCC, recause REE requires it
+if [-f /usr/bin/gcc-4.2 ]; then
+  echo "gcc-4.2 already installed, skipping"
 else
-  echo "GCC not found. I deeply suspect you did not install the Xcode Command Line tools. Exiting!"
-  exit 1
+  echo "Installing gcc-4.2..."
+  curl -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg -o /tmp/gcc-install.pkg
+  echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
 fi
 
 echo ""
