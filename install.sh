@@ -16,7 +16,7 @@ if !(echo $sudo_pass | sudo -S pwd &> /dev/null); then
 fi
 
 # Install GCC, recause REE requires it
-if [-f /usr/bin/gcc-4.2 ]; then
+if [ -f /usr/bin/gcc-4.2 ]; then
   echo "gcc-4.2 already installed, skipping"
 else
   echo "Installing gcc-4.2..."
