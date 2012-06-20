@@ -13,7 +13,7 @@ is only designed to work on a totally clean installation.
 1. [Go to this page and download/install "Command Line Tools for Xcode"](https://developer.apple.com/downloads/index.action).
 You may have to register/sign in, so go ahead and do that.
 
-2. Run this (all one line) in a terminal:
+2. Run this (all one line) in a terminal. At the start, it will ask you for an administrator password and have you click through the installer for GCC, but after that it should chug along unattendend.
 
 <!-- force end of numbered list before code black -->
 
