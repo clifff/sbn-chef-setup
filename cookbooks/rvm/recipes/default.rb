@@ -36,6 +36,8 @@ template "#{user_path}.bash_profile" do
   )
 end
 
+execute "source #{user_path}.bash_profile"
+
 # Needed in order to actually install REE
 execute "rvm pkg install openssl"
 
