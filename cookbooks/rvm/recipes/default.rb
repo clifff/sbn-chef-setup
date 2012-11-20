@@ -36,6 +36,8 @@ template "#{user_path}.bash_profile" do
   )
 end
 
+# Needed in order to actually install REE
+execute "rvm pkg install openssl"
 
 bash "install sbn default gemset" do
   default_gemset = node[:rvm][:default_gemset]
