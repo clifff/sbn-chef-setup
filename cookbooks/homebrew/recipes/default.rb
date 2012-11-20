@@ -13,8 +13,10 @@ execute "update homebrew from github" do
   command "/usr/local/bin/brew update || true"
 end
 
+tap_source = "homebrew/dupes"
 execute "add dupes sources" do
-  command "/usr/local/bin/brew tap homebrew/dupes"
+  command "/usr/local/bin/brew tap #{tap_source}"
+  not_if { `/usr/local/bin/brew tap`.include?(tap_source) }
 end
 
 # These are all neccesary to get gcc 4.2, which rvm needs to install things and
