@@ -15,7 +15,13 @@ is only designed to work on a totally clean installation.
 2. [Go to this page and download/install "Command Line Tools for Xcode"](https://developer.apple.com/downloads/index.action).
 You may have to register/sign in, so go ahead and do that.
 
-3. Run this (all one line) in a terminal. At the start, it will ask you for an administrator password and (might) have you click through the installer for GCC, but after that it should chug along unattendend.
+3. Agree to Xcode's licensing agreement by running:
+
+<!-- break list -->
+
+    xcodebuild -license
+
+4. Run this (all one line) in a terminal. At the start, it will ask you for an administrator password and (might) have you click through the installer for GCC, but after that it should chug along unattendend.
 
 <!-- force end of numbered list before code black -->
 
