@@ -15,14 +15,8 @@ if !(echo $sudo_pass | sudo -S pwd &> /dev/null); then
   exit
 fi
 
-# Install GCC, recause REE requires it
-if [ -f /usr/bin/gcc-4.2 ]; then
-  echo "gcc-4.2 already installed, skipping"
-else
-  echo "Installing gcc-4.2..."
-  curl -L https://github.com/downloads/kennethreitz/osx-gcc-installer/GCC-10.7-v2.pkg -o /tmp/gcc-install.pkg
-  echo $sudo_pass | sudo -S installer -pkg "/tmp/gcc-install.pkg" -target /
-fi
+# Ensure GCC is installed
+type gcc >/dev/null 2>&1 || { echo >&2 "GCC is not installed!  Aborting."; exit 1; }
 
 echo ""
 echo "Updating rubygems"
