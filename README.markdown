@@ -10,10 +10,12 @@ is only designed to work on a totally clean installation.
 
 ## How to use
 
-1. [Go to this page and download/install "Command Line Tools for Xcode"](https://developer.apple.com/downloads/index.action).
+1. Open up the App Store and [download/install the latest version of Xcode.](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+
+2. [Go to this page and download/install "Command Line Tools for Xcode"](https://developer.apple.com/downloads/index.action).
 You may have to register/sign in, so go ahead and do that.
 
-2. Run this (all one line) in a terminal. At the start, it will ask you for an administrator password and (might) have you click through the installer for GCC, but after that it should chug along unattendend.
+3. Run this (all one line) in a terminal. At the start, it will ask you for an administrator password and (might) have you click through the installer for GCC, but after that it should chug along unattendend.
 
 <!-- force end of numbered list before code black -->
 
@@ -22,7 +24,6 @@ You may have to register/sign in, so go ahead and do that.
 ## Technical Details
 In short, this script uses Chef-solo (contained inthis repo) to manage Homebrew packages and other dependencies used by the SBN app. The install process roughly goes like this:
 
-* Installs GCC, but not X-Code, via [this project](https://github.com/kennethreitz/osx-gcc-installer)
 * Updates rubygems (so that Chef can be installed cleanly)
 * Copies this repo and unzips it
 * Installs the chef gem
