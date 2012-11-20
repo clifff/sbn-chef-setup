@@ -56,7 +56,7 @@ bash "install sbn default gemset" do
   code <<-EOS
     source "#{user_path}.bash_profile"
     rvm remove #{default_ruby}
-    export CC=/usr/bin/gcc-4.2
+    export CC=/usr/local/bin/gcc-4.2
     rvm install --force #{default_ruby}
     rvm use #{default_gemset} --create
     rvm use #{default_gemset} --default
