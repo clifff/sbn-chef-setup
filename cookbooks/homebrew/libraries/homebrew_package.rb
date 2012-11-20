@@ -1,6 +1,6 @@
 # Taken from https://github.com/josh/osx-cookbooks/blob/master/homebrew/libraries/homebrew.rb
 
-require 'chef/provider/package'
+require File.join( File.dirname(__FILE__), 'homebrew_package' )
 
 class Chef::Provider::Package::Homebrew < ::Chef::Provider::Package
   def initialize(new_resource, run_context)
