@@ -4,7 +4,7 @@ sudo "create /usr/local" do
 end
 
 execute "install homebrew" do
-  command %Q[/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"]
+  command %Q[/usr/bin/ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"]
   cwd "/usr/local"
   not_if { File.exist? '/usr/local/bin/brew' }
 end
