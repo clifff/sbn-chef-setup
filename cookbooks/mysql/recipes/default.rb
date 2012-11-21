@@ -1,6 +1,10 @@
-include_recipe "homebrew"
+include_recipe "dmg"
 
-package "mysql"
+dmg_package "mysql" do
+  dmg_name "googlechrome"
+  source "http://downloads.mysql.com/archives/mysql-5.1/mysql-5.1.62-osx10.6-x86_64.dmg"
+  action :install
+end
 
 # Hopefully there is no problem with this always running?
 execute "mysql_install_db" do
